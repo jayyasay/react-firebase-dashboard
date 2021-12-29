@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import './firebase/config'
+import { Route, Routes } from 'react-router-dom';
+import { UserProvider } from './firebase/userProvider';
+import Header from './Header';
+
 
 function App() {
+  // const navigate = useNavigate();
+
+  // const logoutUser = async () => {
+  //   await logout();
+  //   navigate('/signup')
+  // }
+
+  // const { user } = useSession();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <UserProvider> 
+    <div className="app">
+    <Header />
+      <div className="ui grid container">
+      
+        <Routes>
+          <Route path="/signup" element={ <Signup /> } />
+          <Route path="/profile/:id" element={ <Profile /> } />
+        </Routes>
+      </div>
     </div>
+    </UserProvider>
+    </>
   );
 }
 
