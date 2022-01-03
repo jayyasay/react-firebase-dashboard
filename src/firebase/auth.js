@@ -11,3 +11,9 @@ export const signup = async ({ firstName, lastName, email, password }) => {
 export const logout = () => {
     return firebase.auth().signOut();
 }
+
+export const login = async ({email, password}) => {
+    const resp = await firebase.auth().signInWithEmailAndPassword(email, password);
+    const user = resp.user;
+    return user;
+}

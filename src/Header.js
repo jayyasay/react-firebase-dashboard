@@ -7,7 +7,7 @@ export const Header = () => {
   
     const logoutUser = async () => {
       await logout();
-      hello('/signup')
+      hello('/login')
     }
 
     const { user }  = useSession();
