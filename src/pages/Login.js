@@ -52,7 +52,7 @@ function Login(props) {
               <button className="ui primary button login" type="submit">
                 Login
               </button> or 
-              <Link to ="/signup">Sing up</Link>
+              <Link to ="/signup">Sign up</Link>
             </div>
             
           </form>

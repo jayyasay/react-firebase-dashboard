@@ -28,10 +28,10 @@ function App() {
       <div className="ui grid container">
       
         <Routes>
-          <Route exact path="/signup" element={ <Signup /> } />
+          <Route path="/signup" element={ <ProfileRedirect><Signup /></ProfileRedirect> } />
           <Route path="/profile/:id" element={ <Profile /> } />
-          <Route path="Login" element={ <Login /> } />
-          <Route exact path='/' element={<ProfileRedirect/>} />
+          <Route path="/login" element={ <ProfileRedirect><Login /></ProfileRedirect> } />
+          {/* <Route exact path='/' element={<ProfileRedirect/>} /> */}
         </Routes>
       </div>
     </div>
