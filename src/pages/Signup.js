@@ -68,7 +68,7 @@ function Signup(props) {
                 Password
                 <input type="password" name="password" placeholder="Password" {...register("password", {
                       required: "Required",
-                    })} />
+                    })} autoComplete='autocomplete'/>
               </label>
             </div>
             <div className="field actions">
