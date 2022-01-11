@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, Outlet } from "react-router-dom"
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form'
 import { signup } from '../firebase/auth';
 
 function Signup(props) {
@@ -40,35 +40,27 @@ function Signup(props) {
                     type="text"
                     name="firstName"
                     placeholder="First Name"
-                    {...register("firstName", {
-                      required: "Required",
-                    })}
+                    {...register('firstName')}
                   />
                 </label>
               </div>
               <div className="field">
                 <label>
                   Last Name
-                  <input type="text" name="lastName" placeholder="Last Name"  {...register("lastName", {
-                      required: "Required",
-                    })} />
+                  <input type="text" name="lastName" placeholder="Last Name"  {...register('lastName')} />
                 </label>
               </div>
             </div>
             <div className="field">
               <label>
                 Email
-                <input type="email" name="email" placeholder="Email" {...register("email", {
-                      required: "Required",
-                    })} />
+                <input type="email" name="email" placeholder="Email" {...register('email')} />
               </label>
             </div>
             <div className="field">
               <label>
                 Password
-                <input type="password" name="password" placeholder="Password" {...register("password", {
-                      required: "Required",
-                    })} autoComplete='autocomplete'/>
+                <input type="password" name="password" placeholder="Password" {...register('password')}autoComplete='autocomplete'/>
               </label>
             </div>
             <div className="field actions">

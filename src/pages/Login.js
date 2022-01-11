@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, Outlet } from "react-router-dom"
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import { login } from '../firebase/auth';
 
 function Login(props) {
@@ -35,17 +35,13 @@ function Login(props) {
             <div className="field">
               <label>
                 Email
-                <input type="email" name="email" placeholder="Email" {...register("email", {
-                      required: "Required",
-                    })} />
+                <input type="email" name="email" placeholder="Email" {...register('email')} />
               </label>
             </div>
             <div className="field">
               <label>
                 Password
-                <input type="password" name="password" placeholder="Password" {...register("password", {
-                      required: "Required",
-                    })} autoComplete='autocomplete' />
+                <input type="password" name="password" placeholder="Password" {...register('password')}autoComplete='autocomplete' />
               </label>
             </div>
             <div className="field actions">

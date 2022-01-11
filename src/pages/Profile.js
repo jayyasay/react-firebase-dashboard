@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { useSession } from '../firebase/userProvider';
 import { firestore } from '../firebase/config';
+import { useForm } from 'react-hook-form';
 
 const Profile = () => {
     const { user } = useSession();
@@ -12,14 +12,11 @@ const Profile = () => {
 
     useEffect(() => {
         const docRef = firestore.collection('users').doc(params.id);
-        // Not real-time
         // docRef.get().then((document) => {
         //     if (document.exists) {
         //         setUserDocument(document.data());
         //     }
-        // })
-
-        //Real time
+        // });
         const unsubscribe = docRef.onSnapshot((doc) => {
             if (doc.exists) {
                 const documentData = doc.data();
@@ -27,15 +24,15 @@ const Profile = () => {
                 const formData = Object.entries(documentData).map((entry) => ({
                     [entry[0]]: entry[1],
                 }));
-                setValue(formData);
+                setValue(formData)
             }
         });
         return unsubscribe;
-    }, [user.id, setValue]);
+    }, [user.uid, setValue, params.id])
 
     if (!userDocument) {
         return null;
-    };
+    }
 
     return (
         <div
@@ -47,13 +44,13 @@ const Profile = () => {
       <div className="eight wide field">
         <label>
           Name
-          <input type="text" {...register('name', { required: true })} />
+          <input type="text" name="name" {...register("name")} />
         </label>
       </div>
       <div className="eight wide field">
         <label>
           Email
-          <input type="text" disabled {...register('email', { required: true })} />
+          <input type="text" name="email" disabled {...register("email")} />
         </label>
       </div>
     </div>
@@ -61,25 +58,25 @@ const Profile = () => {
       <div className="six wide field">
         <label>
           Address
-          <input type="text" {...register('address', { required: true })} />
+          <input type="text" name="address" {...register("address")} />
         </label>
       </div>
       <div className="five wide field">
         <label>
           City
-          <input type="text" {...register('city', { required: true })} />
+          <input type="text" name="city" {...register("city")} />
         </label>
       </div>
       <div className="two wide field">
         <label>
           State
-          <input type="text" {...register('state', { required: true })} />
+          <input type="text" name="state" {...register("state")} />
         </label>
       </div>
       <div className="three wide field">
         <label>
           Zip
-          <input type="text" {...register('zip', { required: true })} />
+          <input type="text" name="zip" {...register("zip")} />
         </label>
       </div>
     </div>
@@ -87,13 +84,13 @@ const Profile = () => {
       <div className="field">
         <label>
           Phone
-          <input type="text" {...register('phone', { required: true })} />
+          <input type="text" name="phone" {...register("phone")} />
         </label>
       </div>
       <div className="field">
         <label>
           Specialty
-          <select className="specialty" {...register('specialty', { required: true })}>
+          <select className="specialty" name="specialty" {...register("specialty")} >
             <option value="field agent">Field Agent</option>
             <option value="covert operations">Covert Operations</option>
             <option value="intelligence officer">Intelligence Officer</option>
@@ -103,7 +100,7 @@ const Profile = () => {
       <div className="field">
         <label>
           ip
-          <input type="text" name="ip" />
+          <input type="text" name="ip" {...register("ip")} />
         </label>
       </div>
     </div>
@@ -116,4 +113,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default Profile;
